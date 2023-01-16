@@ -1,0 +1,103 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <form action="" [formGroup]="registerTaskForm"  style="overflow-y: scroll;">
+        <div class="card-title text-center">Register your task</div>
+    <!-- <div class="card"> -->
+        <div class="row  text-center">
+            <!-- <input type="text" class="form-control" placeholder="enter your email" formControlName="email" maxlength="120"> -->
+            <div class="col-md-4">
+            <label for="" class="text-start">Company Id</label>
+            <input type="text" class="form-control" placeholder="enter your company id" formControlName="company_id" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('company_id')?.hasError('required') && registerTaskForm.get('company_id')?.touched ">*company id is required. </small>
+            </div>
+
+            
+            <div class="col-md-4">
+                <label for="" class="text-start">User Id</label>
+
+                <input type="text" class="form-control" placeholder="enter your user id" formControlName="user_id" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('user_id')?.hasError('required') && registerTaskForm.get('user_id')?.touched ">*user id is required. </small>
+
+            </div>
+            <div class="col-md-4">
+                <label for="" class="text-start">Role Id</label>
+
+            <input type="text" class="form-control" placeholder="enter your role id" formControlName="role_id" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('role_id')?.hasError('required') && registerTaskForm.get('role_id')?.touched ">*role id is required. </small>
+
+            </div>
+        </div>
+        <div class="row  text-center">
+            <!-- <input type="text" class="form-control" placeholder="enter your email" formControlName="email" maxlength="120"> -->
+            <div class="col-md-4">
+                <label for="" class="text-start">Project Id</label>
+            <input type="text" class="form-control" placeholder="enter your project id" formControlName="project_id" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('project_id')?.hasError('required') && registerTaskForm.get('project_id')?.touched ">*project id is required. </small>
+
+            </div>
+            
+            <div class="col-md-4">
+                <label for="" class="text-start">Service Id</label>
+
+                <input type="text" class="form-control" placeholder="enter your service id" formControlName="service_id" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('service_id')?.hasError('required') && registerTaskForm.get('service_id')?.touched ">*service id is required. </small>
+
+            </div>
+            <div class="col-md-4">
+                <label for="" class="text-start">Branch Id</label>
+
+            <input type="text" class="form-control" placeholder="enter your branch id" formControlName="branch_id" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('branch_id')?.hasError('required') && registerTaskForm.get('branch_id')?.touched ">*branch id is required. </small>
+                
+            </div>
+        </div>
+        <div class="row  text-center">
+            <!-- <input type="text" class="form-control" placeholder="enter your email" formControlName="email" maxlength="120"> -->
+            <div class="col-md-4">
+                <label for="" class="text-start">Work Date</label>
+            <input type="date" class="form-control" placeholder="" formControlName="work_date" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('work_date')?.hasError('required') && registerTaskForm.get('work_date')?.touched ">*work date id is required. </small>
+
+            </div>
+            <div class="col-md-4">
+                <label for="" class="text-start">Total Time</label>
+                <input type="text" class="form-control" placeholder="enter your total time" formControlName="total_time" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('total_time')?.hasError('required') && registerTaskForm.get('total_time')?.touched ">*total time id is required. </small>
+                
+            </div>
+            <div class="col-md-4">
+            <label for="" class="text-start">Work Hours</label>
+
+            <input type="text" class="form-control" placeholder="enter your work hours" formControlName="work_hour" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('work_hour')?.hasError('required') && registerTaskForm.get('work_hour')?.touched ">*work hours id is required. </small>
+
+            </div>
+
+            <div class="col-md-4">
+                <label for="" class="text-start">Comments</label>
+    
+                <input type="text" class="form-control" placeholder="enter your comments" formControlName="comments" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('comments')?.hasError('required') && registerTaskForm.get('comments')?.touched ">*comments id is required. </small>
+                
+                </div>            
+                <div class="col-md-4">
+                    <label for="" class="text-start">Break Time</label>
+        
+                    <input type="text" class="form-control" placeholder="enter your break time" formControlName="break_time" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('break_time')?.hasError('required') && registerTaskForm.get('break_time')?.touched ">*break time is required. </small>
+                    
+                    </div>           
+        </div>
+        <div class="col-md-4  text-center mt-4 mb-1 d-flex"style="justify-content:center;align-item:center;display:flex;">
+            <button class="btn btn-sm btn-primary" style="display: flex;justify-content: center;align-items: center;" (click)="registerTask()" [disabled]="!registerTaskForm.valid">Register</button>
+            <!-- <button class="btn btn-primary" routerLink="/signup">Signp</button> -->
+        </div>
+        <p class="mt-4 register" routerLink="/login">Login</p>
+
+    <!-- </div> -->
+
+    </form>
+    </div>
+</div>
+<app-footer></app-footer>

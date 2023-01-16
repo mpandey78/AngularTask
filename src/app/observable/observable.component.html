@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container">
+    observable
+</div>
+<div class="containernew">
+    <div class="ul">
+        <li *ngFor="let item of members">{{item}}</li>
+
+
+    </div>
+{{count}}
+    
+</div>
+<div>
+    <input type="text" class="enter" placeholder="Name of player" #addMemberInput (input)="OnInput(addMemberInput.value)" [value]="newMemberName">
+    <button class="btn btn-primary mb-1" (click)="addName()">submit</button>
+    <!-- <div class="count">{{countkiya}}</div> -->
+    <input type="text" name="value" [(ngModel)]="value" #newValue>
+    <div class="value" [ngStyle]="textStyle">{{value.toUpperCase()}}</div>
+</div>
+    <div class="row">
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Status</th>
+
+            </thead>
+            <tbody *ngFor="let item of studentData">
+                <td>{{item._id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.status}}</td>
+            </tbody>
+        </table>
+</div>

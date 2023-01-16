@@ -1,0 +1,115 @@
+.position-relative > i{
+    position: absolute;
+    right: -15px;
+    bottom: 12px;
+}
+
+.d-none{
+    display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.btn-theme{
+    background: #7cb73f !important;
+    border-color: #7cb73f !important;
+}
+.w-40{
+    width: 40%;
+}
+.w-10{
+    width: 10%;
+}
+.inputDate{
+    min-width: 160px;
+}
+thead{
+    background: #7cb740;
+}
+thead >tr > th , tbody >tr > td,  tbody >tr > th{
+    color: black;
+}
+
+
+a {
+    color: #7cb740 !important;
+    margin-left: 15px !important;
+    text-decoration: underline !important;
+    font-size: small;
+}
+
+// tr {
+//     border: 1px solid black;
+// }
+.table-bordered td, .table-bordered th {
+    border: 0px solid #000000 !important;
+}
+
+
+input.form-control,  input.form-control:focus{
+    background: transparent;
+    color: blue;
+}
+
+
+
+
+.modal-body{
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+.cancle-delete-btn{
+    margin-left: auto;
+    margin-right: auto;
+}
+.modal-data{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150.5%;
+    /* or 36px */
+    
+    font-feature-settings: 'tnum' on, 'lnum' on;
+    
+    color: #FFFFFF;
+    
+}
+.main-modal{
+    background: #1F1C1C;
+    border: 2px solid #7cb740;
+}
+
+.btn-cancle {
+    background: #7CB93E;
+    color: white;
+    padding: 8px 67px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.btn-add {
+    background: transparent;
+    color: #7CB93E;
+    border: 1px solid #7CB93E;
+    padding: 8px 67px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+// .block{
+//     cursor: pointer;
+// }

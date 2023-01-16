@@ -1,0 +1,21 @@
+
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+    <form action="" [formGroup]="singupForm">
+    <div class="card">
+        <div class="card-title text-center mt-2" style="color: blue;">Singup Form </div>
+        <div class="col-md-12 mt-2 text-center">
+            <input type="text" placeholder="enter your email" formControlName="email">
+        </div>
+        <div class="col-md-12 mt-2 text-center">
+            <input type="password" placeholder="enter your Password" formControlName="password">
+        </div>
+        <div class="col-md-12 text-center mt-2 mb-2">
+            <button class="btn btn-sm btn-primary"[disabled]="!singupForm.valid" (click)="OnSubmit()" >Signup</button>
+        </div>
+    </div>
+
+    </form>
+    </div>
+</div>

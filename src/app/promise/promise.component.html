@@ -1,0 +1,45 @@
+<app-header></app-header>
+<div class="container">
+<div class="my-3">
+    <h2>Promise</h2>
+    <br>
+    <h2>{{laptopData}}</h2>
+</div>
+<div class="row">
+    <div class="col-md-6">
+<!-- <div class="container"> -->
+<table class="">
+    <tr>
+        <td>SN.</td>
+        <td>Employee Name</td>
+        <!-- <td>StartTime Time(Hr.)</td>
+        <td>EndTime Time(Hr.)</td> -->
+        <td>Total Hours</td>
+
+    </tr>
+    <tr *ngFor="let item of finalData; let i = index  ">
+        <td>{{i + 1}}</td>
+        <td >{{item.EmployeeName}}</td>
+        <!-- <td >{{item.StarTimeUtc}}</td>
+        <td> {{item.EndTimeUtc}} </td> -->
+        <td *ngIf="item.totalHrs<=100" style="background-color: red;color: white;">{{item.totalHrs}} Hr</td>
+
+    </tr>
+    <tr>No Data</tr>
+
+</table>
+<!-- </div> -->
+</div>
+<div class="col-md-6">
+
+<input type="text" class="form-control" [value]="newData" #newValue (input)="onInput(newValue.value)">
+<div class="submitbtn mt-2">
+    <button class="btn btn-primary" (click)="sendData()" >Submit</button>
+</div>
+<div class="array" *ngFor="let item of allData">
+{{item}}
+</div>
+
+</div>
+</div>
+</div>
