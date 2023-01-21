@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     })
   }
   OnSubmit(){
-    this.router.navigate(['/worksheet'])
+    // this.router.navigate(['/worksheet'])
 
   //   const user =this.userAuth(this.loginForm.value)
   //   if(user){
@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit {
   console.log(dataApi);
   
   let url='https://onjyb.dss.gos.mybluehostin.me/api/User_Controller/login'
-  this.http.post(url,dataApi).subscribe(res=>{
-      this.router.navigate(['/worksheet'])
-    
+  this.http.post(`${url}?txtEmail=jignesh@etechmavens.com+txtPassword=a`,dataApi).subscribe(res=>{
+    this.router.navigate( ['/worksheet'], {queryParams: { txtEmail:"jignesh@etechmavens.com",txtPassword:"a"
+  }});    
   })
 
   }

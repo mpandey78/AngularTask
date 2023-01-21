@@ -21,7 +21,7 @@
         </div>
 
         <small class="text-danger" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched ">*Password
-     is
+             is
             required. </small>
         <div class="col-md-12 text-center  d-flex"style="justify-content:center;">
             <button class="btn btn-sm btn-primary" [disabled]="!loginForm.valid" (click)="OnSubmit()">Login</button>

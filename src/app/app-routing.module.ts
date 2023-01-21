@@ -10,9 +10,9 @@ import { WorksheetTaskComponent } from './worksheet-task/worksheet-task.componen
 import { WorksheetComponent } from './worksheet/worksheet.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'/home',pathMatch:'full'},
-  {path:'home',component:WorksheetTaskComponent},
+  {path:'',redirectTo:'/login',pathMatch:'full'},
   {path:'login',component:LoginComponent},
+  {path:'home',component:WorksheetTaskComponent},
   {path:'promise',component:PromiseComponent},
   {path:'observable',component:ObservableComponent},  
   {path:'signup',component:SignupComponent},
