@@ -111,7 +111,7 @@ export class UserListComponent implements OnInit {
         if(res) {
         
           this.getUserList()
-          this.router.navigate(['/user-list'])
+          // this.router.navigate(['/user-list'])
     window.location.href = '/user-list'
 
         // $("#exampleModal").modal("hide");
