@@ -1,0 +1,182 @@
+<app-header></app-header>
+
+<div class="container" style="background-color: #dee2e6 !important;">
+    <div class="col-lg-12 mt-3" style="margin-top: 70px !important;">
+        <div class="head d-flex justify-content-between">
+        <h2 class="mt-2">List of Users</h2>
+        <!-- data-bs-toggle="modal" data-bs-target="#addUser" -->
+        <h2 class="text-success addUser mt-2" routerLink="/add-user"  ><i class="fa fa-plus"></i> Add User</h2>
+        </div>
+        <div class="table-responsive-md sortable mt-3">
+            <table class="table table-bordered" style="    border: 1px solid #dee2e6;">
+                <thead>
+                    <tr style="background-color: blue;color: white;">
+
+                        <th scope="col">id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Edit User</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let item of worksheetList;let i = index"> -->
+                    <tr
+                        *ngFor="let item of userList | paginate:{itemsPerPage:itemPerPage, currentPage: currentPage, totalItems: totalItems};">
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.name}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.gender}}</td>
+                        <td>{{item.status}}</td>
+                        <td class="task" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="editUser(item.id)">Edit User</td>
+                    </tr>
+                    <tr *ngIf="totalItems==0">
+                        <td>No data found</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="custom-pagination mt-2  text-align-center" style="text-align: center !important; color: blue;"
+                *ngIf="totalItems > 5">
+                <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-footer></app-footer> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit/Update User</h5>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+                <form action="" [formGroup]="editUserForm" style="overflow-y: scroll;">
+                    <div class="col-md-12">
+                        <label for="" class="text-start">Name</label>
+                        <input type="text" class="form-control" placeholder="enter your Name" formControlName="name"
+                            maxlength="120">
+                        <small class="text-danger"
+                            *ngIf="editUserForm.get('name')?.hasError('required') && editUserForm.get('name')?.touched ">*user
+                            name is required. </small>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="" class="text-start">Email</label>
+                        <input type="text" class="form-control" placeholder="enter your email id" formControlName="email"
+                            maxlength="120">
+                        <small class="text-danger"
+                            *ngIf="editUserForm.get('email')?.hasError('required') && editUserForm.get('email')?.touched ">*email
+                            id is required. </small>
+                            <small class=" text-danger" *ngIf="editUserForm.get('email')?.hasError('pattern') && editUserForm.get('email')?.dirty"> *Please
+                                enter
+                                valid email address.</small>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="" class="text-start">Gender</label>
+                        <select name="" id="" formControlName="gender" class="form-control">
+                            <option value="" selected>Select your Gender</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                        </select>
+                        <small class="text-danger"
+                            *ngIf="editUserForm.get('gender')?.hasError('required') && editUserForm.get('gender')?.touched ">*gender
+                            is required. </small>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="" class="text-start">Status</label>
+                            <select name="" id="" formControlName="status" class="form-control">
+                                <option value="" selected>Select Status</option>
+                                <option value="active">active</option>
+                                <option value="inactive">inactive</option>
+                            </select>
+                            <!-- <input type="text" class="form-control" placeholder="enter your Status" formControlName="status" maxlength="120"> -->
+                            <small class="text-danger"
+                                *ngIf="editUserForm.get('status')?.hasError('required') && editUserForm.get('status')?.touched ">*status
+                                is required. </small>
+                        </div>
+                    </div>
+                <div class="modal-footer justify-content-start mt-2">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" (click)="editUserByid()"
+                  [disabled]="!editUserForm.valid">Update</button>
+                </div>
+            </form>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- baneer -->
+<div class="modal fade" id="addUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">User Registration</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+            <form action="" [formGroup]="registerTaskForm" style="overflow-y: scroll;">
+                    <div class="col-md-12">
+                        <label for="" class="text-start">Name</label>
+                        <input type="text" class="form-control" placeholder="enter your Name" formControlName="name"
+                            maxlength="120">
+                        <small class="text-danger"
+                            *ngIf="registerTaskForm.get('name')?.hasError('required') && registerTaskForm.get('name')?.touched ">*user
+                            name is required. </small>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="" class="text-start">Email</label>
+                        <input type="text" class="form-control" placeholder="enter your email id" formControlName="email"
+                            maxlength="120">
+                        <small class="text-danger"
+                            *ngIf="registerTaskForm.get('email')?.hasError('required') && registerTaskForm.get('email')?.touched ">*email
+                            id is required. </small>
+                            <small class=" text-danger" *ngIf="registerTaskForm.get('email')?.hasError('pattern') && registerTaskForm.get('email')?.dirty"> *Please
+                                enter
+                                valid email address.</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="" class="text-start">Gender</label>
+                        <select name="" id="" formControlName="gender" class="form-control">
+                            <option value="" selected>Select your Gender</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                        </select>
+                        <small class="text-danger"
+                            *ngIf="registerTaskForm.get('gender')?.hasError('required') && registerTaskForm.get('gender')?.touched ">*gender
+                            is required. </small>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="" class="text-start">Status</label>
+                            <select name="" id="" formControlName="status" class="form-control">
+                                <option value="" selected>Select Status</option>
+                                <option value="active">active</option>
+                                <option value="inactive">inactive</option>
+                            </select>
+                            <!-- <input type="text" class="form-control" placeholder="enter your Status" formControlName="status" maxlength="120"> -->
+                            <small class="text-danger"
+                                *ngIf="registerTaskForm.get('status')?.hasError('required') && registerTaskForm.get('status')?.touched ">*status
+                                is required. </small>
+                        </div>
+                    </div>
+                <div class="modal-footer justify-content-start">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" (click)="registerTask()"
+                  [disabled]="!registerTaskForm.valid">Register</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

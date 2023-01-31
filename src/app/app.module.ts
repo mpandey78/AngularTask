@@ -10,10 +10,12 @@ import { ObservableComponent } from './observable/observable.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { ChartsModule } from 'ng2-charts';
 import { RegisterTaskComponent } from './register-task/register-task.component';
 import { WorksheetTaskComponent } from './worksheet-task/worksheet-task.component';
 import { WorksheetComponent } from './worksheet/worksheet.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AddUserComponent } from './add-user/add-user.component';
 
 
 
@@ -29,15 +31,17 @@ import { WorksheetComponent } from './worksheet/worksheet.component';
     SignupComponent,
     RegisterTaskComponent,
     WorksheetTaskComponent,
-    WorksheetComponent
-  ],
+    WorksheetComponent,
+    UserListComponent,
+    AddUserComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ChartsModule
+    NgxPaginationModule
     
   ],
   providers: [

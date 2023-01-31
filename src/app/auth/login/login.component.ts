@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {HttpClient} from '@angular/common/http'
+import { AuthServiceService } from 'src/app/provider/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
     this.changetype = !this.changetype;
   }
 
-  constructor(private router:Router,private http:HttpClient) { }
+  constructor(private router:Router,private http:HttpClient,private authService:AuthServiceService) { }
 
   ngOnInit(): void {
     
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
     })
   }
   OnSubmit(){
-    this.router.navigate(['/worksheet'])
+    // this.router.navigate(['/worksheet'])
 
   //   const user =this.userAuth(this.loginForm.value)
   //   if(user){
@@ -46,16 +47,18 @@ export class LoginComponent implements OnInit {
   //     return userArray.find(p=>p.email === user.email && p.password === user.password)
   //   }
   let dataApi = {
-    txtEmail:this.loginForm.value.email,
-    txtPassword:this.loginForm.value.password
+    email:this.loginForm.value.email,
+    password:this.loginForm.value.password
   }
   console.log(dataApi);
-  
-  let url='https://onjyb.dss.gos.mybluehostin.me/api/User_Controller/login'
-  this.http.post(`${url}?txtEmail=jignesh@etechmavens.com+txtPassword=a`,dataApi).subscribe(res=>{
-    this.router.navigate( ['/worksheet'], {queryParams: { txtEmail:"jignesh@etechmavens.com",txtPassword:"a"
-  }});    
+  this.authService.postApi('login',dataApi,0).subscribe(res=>{
+   alert("Login Succesful")
   })
+  // let url='https://onjyb.dss.gos.mybluehostin.me/api/User_Controller/login'
+  // this.http.post(`${url}?txtEmail=jignesh@etechmavens.com+txtPassword=a`,dataApi).subscribe(res=>{
+  //   this.router.navigate( ['/worksheet'], {queryParams: { txtEmail:"jignesh@etechmavens.com",txtPassword:"a"
+  // }});    
+  // })
 
   }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import { AuthServiceService } from 'src/app/provider/auth-service.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,35 +10,51 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
- singupForm!:FormGroup
-  constructor(private router:Router) { }
+ registerTaskForm!:FormGroup
+  constructor(private http:HttpClient,private router:Router,private authService:AuthServiceService) { }
 
   ngOnInit(): void {
-    this.singupForm = new FormGroup({
-      'email':new FormControl('',[Validators.required]),
-      'password':new FormControl('',[Validators.required])
+    this.getUserList()
+    this.registerTaskForm= new FormGroup({
+      firstName:new FormControl('',[Validators.required]),
+      lastName:new FormControl('',[Validators.required]),
+      email:new FormControl('',[Validators.required]),
+      mobileNumber:new FormControl('',[Validators.required]),
+      address:new FormControl('',[Validators.required]),
+      dateOfBirth:new FormControl('',[Validators.required]),
+      password:new FormControl('',[Validators.required]),
+      confirmPassword:new FormControl('',[Validators.required]),
+
+      
     })
-  }
-  user:any={}
- OnSubmit(){
-  // console.log("Singup",this.singupForm.value);
-  this.user = Object.assign(this.user,this.singupForm.value)
-  this.addUser(this.user)
-
-  this.router.navigateByUrl('/home')
- 
- }
- addUser(user){
-  let users =[]
-  if(localStorage.getItem('User')){
-    users =JSON.parse(localStorage.getItem('User'))
-    users=[user, ...users]
-
-  }
-  else{
-    users=[user];
-  }
-  localStorage.setItem('User',JSON.stringify(users))
- }
+    }
+    registerTask(){
+      let urlReqData={
+        firstName:this.registerTaskForm.value.firstName,
+        lastName:this.registerTaskForm.value.lastName,
+        email:this.registerTaskForm.value.email,
+        mobileNumber:this.registerTaskForm.value.mobileNumber,
+        address:this.registerTaskForm.value.address,
+        dateOfBirth:this.registerTaskForm.value.dateOfBirth,
+        password:this.registerTaskForm.value.password,
+        confirmPassword:this.registerTaskForm.value.confirmPassword,
+        
+        
+  
+      }
+      console.log(urlReqData);
+      // https://gorest.co.in/public/v2/users
+     this.authService.postApi('signUp',urlReqData,0).subscribe(res =>{
+      console.log(res);
+      alert(res)
+      
+     })
+    }
+    getUserList(){
+      this.http.get('https://gorest.co.in/public/v2/users').subscribe(res=>{
+        console.log(res);
+        
+      })
+    }
 
 }

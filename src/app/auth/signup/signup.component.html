@@ -1,21 +1,82 @@
-
 <app-header></app-header>
 <div class="container">
     <div class="row">
-    <form action="" [formGroup]="singupForm">
-    <div class="card">
-        <div class="card-title text-center mt-2" style="color: blue;">Singup Form </div>
-        <div class="col-md-12 mt-2 text-center">
-            <input type="text" placeholder="enter your email" formControlName="email">
+        <form action="" [formGroup]="registerTaskForm"  style="overflow-y: scroll;">
+        <div class="card-title text-center">Register your task</div>
+    <!-- <div class="card"> -->
+        <div class="row  text-center">
+            <!-- <input type="text" class="form-control" placeholder="enter your email" formControlName="email" maxlength="120"> -->
+            <div class="col-md-4">
+            <label for="" class="text-start">First Name</label>
+            <input type="text" class="form-control" placeholder="enter your first name" formControlName="firstName" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('firstName')?.hasError('required') && registerTaskForm.get('firstName')?.touched ">*first name is required. </small>
+            </div>
+
+            
+            <div class="col-md-4">
+                <label for="" class="text-start">Last Name</label>
+
+                <input type="text" class="form-control" placeholder="enter your last name" formControlName="lastName" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('lastName')?.hasError('required') && registerTaskForm.get('lastName')?.touched ">*user id is required. </small>
+
+            </div>
+            <div class="col-md-4">
+                <label for="" class="text-start">Email</label>
+
+            <input type="text" class="form-control" placeholder="enter your email id" formControlName="email" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('email')?.hasError('required') && registerTaskForm.get('email')?.touched ">*role id is required. </small>
+
+            </div>
         </div>
-        <div class="col-md-12 mt-2 text-center">
-            <input type="password" placeholder="enter your Password" formControlName="password">
+        <div class="row  text-center">
+            <!-- <input type="text" class="form-control" placeholder="enter your email" formControlName="email" maxlength="120"> -->
+            <div class="col-md-4">
+                <label for="" class="text-start">Mobile Number</label>
+            <input type="text" class="form-control" placeholder="enter your mobile number" formControlName="mobileNumber" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('mobileNumber')?.hasError('required') && registerTaskForm.get('mobileNumber')?.touched ">*project id is required. </small>
+
+            </div>
+            
+            <div class="col-md-4">
+                <label for="" class="text-start">Address</label>
+
+                <input type="text" class="form-control" placeholder="enter your address" formControlName="address" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('address')?.hasError('required') && registerTaskForm.get('address')?.touched ">*service id is required. </small>
+
+            </div>
+            <div class="col-md-4">
+                <label for="" class="text-start">Date of Birth</label>
+
+            <input type="date" class="form-control" placeholder="enter your branch id" formControlName="dateofBirth" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('dateofBirth')?.hasError('required') && registerTaskForm.get('dateofBirth')?.touched ">*branch id is required. </small>
+                
+            </div>
         </div>
-        <div class="col-md-12 text-center mt-2 mb-2">
-            <button class="btn btn-sm btn-primary"[disabled]="!singupForm.valid" (click)="OnSubmit()" >Signup</button>
+        <div class="row  text-center">
+            <!-- <input type="text" class="form-control" placeholder="enter your email" formControlName="email" maxlength="120"> -->
+            <div class="col-md-4">
+                <label for="" class="text-start">Password</label>
+            <input type="password" class="form-control" placeholder="enter your password" formControlName="password" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('password')?.hasError('required') && registerTaskForm.get('password')?.touched ">*work date id is required. </small>
+
+            </div>
+            <div class="col-md-4">
+                <label for="" class="text-start">Confirm Password</label>
+                <input type="password" class="form-control" placeholder="enter your confirm password" formControlName="confirmPassword" maxlength="120">
+            <small class="text-danger" *ngIf="registerTaskForm.get('confirmPassword')?.hasError('required') && registerTaskForm.get('confirmPassword')?.touched ">*total time id is required. </small>
+                
+            </div>
+         
         </div>
-    </div>
+        <div class="col-md-4  text-center mt-4 mb-1 d-flex"style="justify-content:center;align-item:center;display:flex;">
+            <button class="btn btn-sm btn-primary" style="display: flex;justify-content: center;align-items: center;" (click)="registerTask()" [disabled]="!registerTaskForm.valid">Register</button>
+            <!-- <button class="btn btn-primary" routerLink="/signup">Signp</button> -->
+        </div>
+        <p class="mt-4 register" routerLink="/login">Login</p>
+
+    <!-- </div> -->
 
     </form>
     </div>
 </div>
+<app-footer></app-footer>
