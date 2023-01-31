@@ -35,10 +35,13 @@
                     
                     </td>
                     </tr>
-                    <tr *ngIf="totalItems==0">
-                        <td>No data found</td>
-                    </tr>
 
+
+                </tbody>
+                <tbody>
+                    <tr *ngIf="userList.length == 0">
+                        <td class="text-center noData" colspan="6"> No data found</td>
+                    </tr>
                 </tbody>
             </table>
             <div class="custom-pagination mt-2  text-align-center" style="text-align: center !important; color: blue;"
