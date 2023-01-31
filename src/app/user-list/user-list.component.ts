@@ -112,7 +112,7 @@ export class UserListComponent implements OnInit {
         
           this.getUserList()
           this.router.navigate(['/user-list'])
-    window.location.href = 'AngularTask/user-list'
+    window.location.href = '/user-list'
 
         // $("#exampleModal").modal("hide");
         }
