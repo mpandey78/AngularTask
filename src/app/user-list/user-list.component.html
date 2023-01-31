@@ -1,14 +1,14 @@
 <app-header></app-header>
 
-<div class="container" style="background-color: #dee2e6 !important;">
-    <div class="col-lg-12 mt-3" style="margin-top: 70px !important;">
+<div class="container">
+    <div class="col-lg-12 mt-3 col-new">
         <div class="head d-flex justify-content-between">
         <h2 class="mt-2">List of Users</h2>
         <!-- data-bs-toggle="modal" data-bs-target="#addUser" -->
-        <h2 class="text-success addUser mt-2" routerLink="/add-user"  ><i class="fa fa-plus"></i> Add User</h2>
+        <h4 class="text-success addUser mt-2" routerLink="/add-user"  ><i class="fa fa-plus"></i>  Add User</h4>
         </div>
-        <div class="table-responsive-md sortable mt-3">
-            <table class="table table-bordered" style="    border: 1px solid #dee2e6;">
+        <div class="table-responsive-md sortable mt-2">
+            <table class="table table-bordered" style="border: 1px solid #7fa8d0;">
                 <thead>
                     <tr style="background-color: blue;color: white;">
 
@@ -31,7 +31,9 @@
                         <td>{{item.gender}}</td>
                         <td>{{item.status}}</td>
                         <td class="task" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                            (click)="editUser(item.id)">Edit User</td>
+                        (click)="editUser(item.id)"><i class="fa fa-edit "></i> <i class="fa fa-eye" style="margin-left: 10px;"></i>
+                    
+                    </td>
                     </tr>
                     <tr *ngIf="totalItems==0">
                         <td>No data found</td>
@@ -46,7 +48,7 @@
         </div>
     </div>
 </div>
-<!-- <app-footer></app-footer> -->
+<app-footer></app-footer>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

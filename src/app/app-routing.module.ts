@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'register-task',component:RegisterTaskComponent},
   {path:'worksheet',component:WorksheetComponent},
   {path:'add-user',component:AddUserComponent},
-  {path:'**',redirectTo:'home'}  
+  {path:'**',redirectTo:'user-list'}  
 ];
 
 @NgModule({
