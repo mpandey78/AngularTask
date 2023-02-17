@@ -3,13 +3,14 @@ import {HttpClient,HttpHeaders} from '@angular/common/http'
 // import {NgxSpinnerService} from 'ngx-spinner';
 // import {ToastrService} from 'ngx-toastr';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
   baseURL='http://localhost:27017/user/'
-  constructor(public httpClient:HttpClient ) { }
+  constructor(public httpClient:HttpClient,private toastr:ToastrService ) { }
   
   getApi(endPointURL:any,isHeader:any) : Observable<any>
   {
@@ -68,5 +69,19 @@ export class AuthServiceService {
     }
 
     return this.httpClient.put(this.baseURL + endPointURL,data,httpHeaders)
+  }
+
+  // toastr service
+  successToast(msg:string) {
+    this.toastr.success(msg);
+  }
+  errorToast(msg:string) {
+    this.toastr.error("erro");
+  }
+  infoToast(msg:string) {
+    this.toastr.info(msg);
+  }
+  warningToast(msg:string) {
+    this.toastr.warning(msg);
   }
 }

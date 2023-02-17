@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="container">
+    <div class="col-lg-12 mt-3 col-new">
+        <div class="head d-flex justify-content-between">
+        <h2 class="mt-2">List of Zones</h2>
+        <!-- data-bs-toggle="modal" data-bs-target="#addUser" -->
+        <h4 class="text-success addUser mt-2" [routerLink]="['/add-zone-list',{}]"  ><i class="fa fa-plus"></i>  Add Zone</h4>
+        </div>
+        <div class="table-responsive-md sortable mt-2">
+            <table class="table table-bordered" style="border: 1px solid #7fa8d0;">
+                <thead>
+                    <tr style="background-color: blue;color: white;">
+
+                        <th scope="col">Id</th>
+                        <th scope="col">Zone Name</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">View/Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of zoneList | paginate:{itemsPerPage:itemPerPage, currentPage: currentPage, totalItems: totalItems};">
+                    <!-- <tr *ngFor="let item of zoneList | paginate:{itemsPerPage:itemPerPage, currentPage: currentPage, totalItems: totalItems};"> -->
+                     <!-- <tr> -->
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.zoneName}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.gender}}</td>
+                        <td>{{item.status}}</td>
+                        <td>{{item.statusDetail.description}}</td>
+                        <td class="task"
+                        ><i class="fa fa-edit " (click)="viewZone(item.id)"></i> <i class="fa fa-eye" style="margin-left: 10px;"routerLink="/view-zone"></i>
+                    
+                    </td>
+                    <!-- </tr> -->
+
+
+                </tbody>
+                <tbody>
+                    <tr *ngIf="zoneList.length == 0">
+                        <td class="text-center noData" colspan="6"> No data found</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="custom-pagination mt-2  text-align-center" style="text-align: center !important; color: blue;"
+                *ngIf="totalItems > 2">
+                <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

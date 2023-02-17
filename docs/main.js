@@ -1150,8 +1150,8 @@ class UserListComponent {
         this.service.putApi('users/' + this.u_id, apiReqData, 1).subscribe(res => {
             if (res) {
                 this.getUserList();
-                this.router.navigate(['/user-list']);
-                window.location.href = 'AngularTask/user-list';
+                // this.router.navigate(['/user-list'])
+                window.location.href = '/user-list';
                 // $("#exampleModal").modal("hide");
             }
         });

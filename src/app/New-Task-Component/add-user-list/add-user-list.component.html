@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div class="newcontainer">
+    <div class="row" style="margin-top: 70px;width: 400px; height: 450px;" >
+        <div class="card p-4">
+            <div class="text-center reg-user">Add Zone</div>
+            <form action="" [formGroup]="registerTaskForm" style="overflow-y: scroll;">
+                <div class="col-md-12 mt-2">
+                    <label for="" class="text-start">Zone Name</label>
+                    <input type="text" class="form-control" placeholder="enter your zone name" formControlName="zone"
+                        maxlength="120">
+                    <small class="text-danger"
+                        *ngIf="registerTaskForm.get('zone')?.hasError('required') && registerTaskForm.get('zone')?.touched ">*zone
+                        name is required. </small>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="text-start">Country</label>
+                    <select name="" id="" formControlName="country" class="form-control" (change)="getStateList($event)">
+
+                        <option value="" selected>Select your Country</option>
+                        <option value="in" *ngFor="let item of countryList" [value]="item.name">{{item.name}}</option>
+                        <!-- <option value="usa">USA</option> -->
+                    </select>
+                    <small class="text-danger"
+                    *ngIf="registerTaskForm.get('country')?.hasError('required') && registerTaskForm.get('country')?.touched ">*country
+                    is required. </small>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <label for="" class="text-start">State</label>
+                        <select name="" id="" formControlName="state" class="form-control">
+                            <option value="" selected>Select State</option>
+                            <option [value]="item.name" *ngFor="let item of getStateByiso2">{{item.name}}</option>
+                        </select>
+                        <!-- <input type="text" class="form-control" placeholder="enter your Status" formControlName="status" maxlength="120"> -->
+                        <small class="text-danger"
+                        *ngIf="registerTaskForm.get('state')?.hasError('required') && registerTaskForm.get('state')?.touched ">*status
+                        is required. </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <label for="" class="text-start">Status</label>
+                        <select name="" id="" formControlName="status" class="form-control">
+                            <option value="" selected>Select State</option>
+                            <option value="active">active</option>
+                            <option value="inactive">inactive</option>
+                        </select>
+                        <!-- <input type="text" class="form-control" placeholder="enter your Status" formControlName="status" maxlength="120"> -->
+                        <small class="text-danger"
+                        *ngIf="registerTaskForm.get('status')?.hasError('required') && registerTaskForm.get('status')?.touched ">*status
+                        is required. </small>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="text-start">Description</label>
+                    <input type="text" class="form-control" placeholder="enter your desciption" formControlName="desctiption"
+                        maxlength="120">
+                    <small class="text-danger"
+                        *ngIf="registerTaskForm.get('desciption')?.hasError('required') && registerTaskForm.get('desciption')?.touched ">*description
+                        id is required. </small>
+
+                </div>
+                <div class="modal-footer justify-content-start mt-4">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" routerLink="/zone-list">Cancel</button>
+              <button type="button" class="btn btn-primary" style="margin-left: 20px;"
+               (click)="registerZone()">Register</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<!-- <app-footer></app-footer> -->

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../provider/shared.service';
 declare var $:any
 
 @Component({
@@ -116,3 +116,26 @@ export class AddUserComponent implements OnInit {
       })
     }
 }
+
+// getCountrytList(){
+//   const headers = new HttpHeaders({ 'X-CSCAPI-KEY':'YTdoekJnaWFyRTBBWTJsMHIwWUZOUk1BRkRwNTNYdjRFcUpNVEdoag==','redirect': 'follow' })
+//   this.http.get('https://api.countrystatecity.in/v1/countries',{headers}).subscribe(res=>{
+//     this.countryList = res
+    
+//   })
+// }
+// isoCode:any
+// getStateList(event:any){
+//   this.isoCode=event.target.value
+//   console.log(this.isoCode);
+  
+//   let apiUrl = `${'https://api.countrystatecity.in/v1/states'}`
+//   const headers = new HttpHeaders({ 'X-CSCAPI-KEY':'YTdoekJnaWFyRTBBWTJsMHIwWUZOUk1BRkRwNTNYdjRFcUpNVEdoag==','redirect': 'follow' })
+//   this.http.get(apiUrl,{headers}).subscribe(res=>{
+//    this.stateList = res
+//    this.getStateByiso2=this.stateList 
+//    console.log(this.getStateByiso2);
+   
+   
+//   })
+// }

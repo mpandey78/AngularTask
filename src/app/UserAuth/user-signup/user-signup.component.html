@@ -1,0 +1,34 @@
+<app-header></app-header>
+<div class="containerNew">
+    <div class="row">
+        <form [formGroup]="userSignupForm">
+        <div class="card">
+        <div class="col-md-12 p-3">
+        <select  class="form-control"  (change)="getStateList($event)">
+        <option value="" selected>select Country</option>
+        <option [value]="item.iso2" *ngFor="let item of countryList">{{item.name}}</option>
+        </select>
+        </div>
+        <div class="col-md-12 p-3">
+        <select class="form-control"  (change)="getCityList($event)">
+            <option value="" selected>Select State</option>
+            <option [value]="item.iso2" *ngFor="let item of stateList">{{item.name}}</option>
+        </select>
+        </div>
+        <div class="col-md-12 p-3">
+            <select class="form-control">
+                <option value="" selected>Select City</option>
+                <option value="" *ngFor="let item of cityList">{{item.name}}</option>
+            </select>
+        </div>
+        <div class="col-md-12 p-3">
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-md-12 p-3">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+        </form>
+    </div>
+    
+</div>

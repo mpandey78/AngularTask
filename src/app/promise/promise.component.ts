@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { rejects } from 'assert';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../provider/shared.service';
 // import { resolve } from 'dns';
 import { HttpClient } from '@angular/common/http';
 @Component({

@@ -1,7 +1,6 @@
 {
   "hosting": {
-    "site": "angular-user-task",
-    "public": "public",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",

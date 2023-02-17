@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonServiceService } from '../provider/common-service.service';
 
 @Component({
   selector: 'app-worksheet-task',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorksheetTaskComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:CommonServiceService) { }
 
   ngOnInit(): void {
+  this.getDataList()
   }
 
+  getDataList(){
+    this.http.getApi('country/getSelectionList',1).subscribe(res=>{
+      console.log(res);
+      
+    })
+  }
 }

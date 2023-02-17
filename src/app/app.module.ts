@@ -16,7 +16,18 @@ import { WorksheetComponent } from './worksheet/worksheet.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddUserComponent } from './add-user/add-user.component';
-
+import {ToastrModule}  from 'ngx-toastr';
+import { AddUserListComponent } from './New-Task-Component/add-user-list/add-user-list.component';
+import { UserListsComponent } from './New-Task-Component/user-lists/user-lists.component';
+import { ViewZoneListComponent } from './New-Task-Component/view-zone-list/view-zone-list.component';
+import { FilterPipe } from './filter.pipe';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from 'angularx-social-login';
+import { UserSignupComponent } from './UserAuth/user-signup/user-signup.component';
+import { UserLoginComponent } from './UserAuth/user-login/user-login.component';
 
 
 
@@ -33,18 +44,54 @@ import { AddUserComponent } from './add-user/add-user.component';
     WorksheetTaskComponent,
     WorksheetComponent,
     UserListComponent,
-    AddUserComponent
+    AddUserComponent,
+    AddUserListComponent,
+    UserListsComponent,
+    ViewZoneListComponent,
+    FilterPipe,
+    UserSignupComponent,
+    UserLoginComponent    
     ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      maxOpened: 1,
+      preventDuplicates: true,
+    }),
+    SocialLoginModule
     
   ],
   providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              // '1016994148249-cvijokf575kprvsj6899n1ms5a213uu4.apps.googleusercontent.com' //stack
+              // '50058279728-v41t0ssdg5potbruufdmh1svalg9o3oq.apps.googleusercontent.com' //old
+              '683195763952-m83jicm4l9vamgdvtq3spu9mi4n2557t.apps.googleusercontent.com' //new manish
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('282577308941815')
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
     
   ],
   bootstrap: [AppComponent]

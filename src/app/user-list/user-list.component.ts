@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../provider/shared.service';
+
 declare var $:any
 @Component({
   selector: 'app-user-list',
@@ -96,10 +97,10 @@ export class UserListComponent implements OnInit {
       })
       // this._id = _id;
         // this._id=_id
-        // $("#exampleModal").modal("show");
-      
+        
       }
-    editUserByid(){
+      editUserByid(){
+      $("#exampleModal").modal('show');
 
       var apiReqData={
         name:this.editUserForm.value.name,
@@ -109,7 +110,7 @@ export class UserListComponent implements OnInit {
       }
       this.service.putApi('users/'+this.u_id,apiReqData,1).subscribe(res=>{
         if(res) {
-        
+          this.service.successToast("Updated")
           this.getUserList()
           // this.router.navigate(['/user-list'])
     window.location.href = '/user-list'
