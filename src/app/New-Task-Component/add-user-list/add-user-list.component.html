@@ -17,7 +17,7 @@
                     <select name="" id="" formControlName="country" class="form-control" (change)="getStateList($event)">
 
                         <option value="" selected>Select your Country</option>
-                        <option value="in" *ngFor="let item of countryList" [value]="item.name">{{item.name}}</option>
+                        <option value="in" *ngFor="let item of countryList" [value]="item.id">{{item.name}}</option>
                         <!-- <option value="usa">USA</option> -->
                     </select>
                     <small class="text-danger"
@@ -27,9 +27,22 @@
                 <div class="row">
                     <div class="col-md-12 mt-2">
                         <label for="" class="text-start">State</label>
-                        <select name="" id="" formControlName="state" class="form-control">
+
+
+<!-- Using Items Input -->
+<!-- <ng-select
+[items]="item.name"
+bindLabel="name"
+placeholder="Select Category"
+appendTo="body"
+[multiple]="true"
+[(ngModel)]="selected">
+</ng-select> -->
+
+
+                        <select name="" id="" formControlName="state" class="form-control" multiple>
                             <option value="" selected>Select State</option>
-                            <option [value]="item.name" *ngFor="let item of getStateByiso2">{{item.name}}</option>
+                            <option [value]="item.name"  *ngFor="let item of getStateByiso2">{{item.name}}</option>
                         </select>
                         <!-- <input type="text" class="form-control" placeholder="enter your Status" formControlName="status" maxlength="120"> -->
                         <small class="text-danger"
@@ -41,7 +54,7 @@
                     <div class="col-md-12 mt-2">
                         <label for="" class="text-start">Status</label>
                         <select name="" id="" formControlName="status" class="form-control">
-                            <option value="" selected>Select State</option>
+                            <option value="" selected>Select Status</option>
                             <option value="active">active</option>
                             <option value="inactive">inactive</option>
                         </select>

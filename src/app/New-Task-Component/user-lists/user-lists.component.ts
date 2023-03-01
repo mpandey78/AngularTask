@@ -20,7 +20,7 @@ export class UserListsComponent implements OnInit {
   }
 
 getListData(){
-  const headers = new HttpHeaders({ 'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IjcxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJkZWZhdWx0bG9naW5icmFuY2giOjEsImlzcyI6InN5c3RlbSIsImlhdCI6MTY3NjAyMzA2MywiZXhwIjoxNjc2MDQxMDYzfQ.GhEpP4ShEfXPFfJkQXwAZudrd9A05ihf0XsBROievjM',"Content-Type": "application/json","moduleId" : '132' })
+  const headers = new HttpHeaders({ 'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IjcxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJkZWZhdWx0bG9naW5icmFuY2giOjEsImlzcyI6InN5c3RlbSIsImlhdCI6MTY3NjYyNjI2OCwiZXhwIjoxNjc2NjQ0MjY4fQ.B6AW3biGLGGdjBVhevYym9kXtWaEVKZtippc6IE4Ye8',"Content-Type": "application/json","moduleId" : '132' })
   this.http.get('https://ats.hiromation.com:5126/zone/list?page_limit=10&page_order=desc&page_page=1&page_search=&page_sort=id&page_entryType=&module_id=132',{headers}).subscribe(res=>{
    this.zoneList=res['data']['content']
   this.totalItems=this.zoneList.length
@@ -41,7 +41,7 @@ getCountryList(){
   })
 }
 viewZone(id:any){
-this.route.navigate(['/view-zone'])
+this.route.navigate(['/view-zone'],{skipLocationChange: true})
 }
 
 }

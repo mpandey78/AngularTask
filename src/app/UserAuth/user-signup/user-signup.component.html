@@ -10,13 +10,13 @@
         </select>
         </div>
         <div class="col-md-12 p-3">
-        <select class="form-control"  (change)="getCityList($event)">
+        <select class="form-control"  (change)="getCityList($event)" multiple>
             <option value="" selected>Select State</option>
             <option [value]="item.iso2" *ngFor="let item of stateList">{{item.name}}</option>
         </select>
         </div>
         <div class="col-md-12 p-3">
-            <select class="form-control">
+            <select class="form-control" multiple>
                 <option value="" selected>Select City</option>
                 <option value="" *ngFor="let item of cityList">{{item.name}}</option>
             </select>

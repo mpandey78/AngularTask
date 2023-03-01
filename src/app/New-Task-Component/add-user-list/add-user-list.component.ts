@@ -28,10 +28,11 @@ export class AddUserListComponent implements OnInit {
   }
 
   getCountrytList(){
-    const headers = new HttpHeaders({ 'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IjcxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJkZWZhdWx0bG9naW5icmFuY2giOjEsImlzcyI6InN5c3RlbSIsImlhdCI6MTY3NjAyMzA2MywiZXhwIjoxNjc2MDQxMDYzfQ.GhEpP4ShEfXPFfJkQXwAZudrd9A05ihf0XsBROievjM',"Content-Type": "application/json","moduleId" : '132' })
+    const headers = new HttpHeaders({ 'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IjcxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJkZWZhdWx0bG9naW5icmFuY2giOjEsImlzcyI6InN5c3RlbSIsImlhdCI6MTY3NjYyNjI2OCwiZXhwIjoxNjc2NjQ0MjY4fQ.B6AW3biGLGGdjBVhevYym9kXtWaEVKZtippc6IE4Ye8',"Content-Type": "application/json","moduleId" : '132' })
 
     this.http.get('https://ats.hiromation.com:5126/country/getSelectionList',{headers}).subscribe(res=>{
       this.countryList = res['data']
+      console.log(this.countryList);
       
     })
   }
@@ -40,10 +41,14 @@ export class AddUserListComponent implements OnInit {
     this.id=event.target.value
     console.log(this.id);
     
+    
     let apiUrl = `${'https://ats.hiromation.com:5126/state/getSelectionList'}`
-    const headers = new HttpHeaders({ 'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IjcxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJkZWZhdWx0bG9naW5icmFuY2giOjEsImlzcyI6InN5c3RlbSIsImlhdCI6MTY3NjAyMzA2MywiZXhwIjoxNjc2MDQxMDYzfQ.GhEpP4ShEfXPFfJkQXwAZudrd9A05ihf0XsBROievjM',"Content-Type": "application/json","moduleId" : '132' })
+    // const headers = new HttpHeaders({ 'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IjcxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJkZWZhdWx0bG9naW5icmFuY2giOjEsImlzcyI6InN5c3RlbSIsImlhdCI6MTY3NjAyMzA2MywiZXhwIjoxNjc2MDQxMDYzfQ.GhEpP4ShEfXPFfJkQXwAZudrd9A05ihf0XsBROievjM',"Content-Type": "application/json","moduleId" : '132' })
+    const headers = new HttpHeaders({ 'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IjcxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJkZWZhdWx0bG9naW5icmFuY2giOjEsImlzcyI6InN5c3RlbSIsImlhdCI6MTY3NjYyNjI2OCwiZXhwIjoxNjc2NjQ0MjY4fQ.B6AW3biGLGGdjBVhevYym9kXtWaEVKZtippc6IE4Ye8',"Content-Type": "application/json","moduleId" : '132' })
 
-    this.http.get(apiUrl,{headers}).subscribe(res=>{
+    this.http.get(apiUrl,{headers,params:{"countryId":this.id}}).subscribe(res=>{
+      console.log(res);
+      
      this.stateList = res['data']
      this.getStateByiso2=this.stateList
      console.log(this.getStateByiso2);
@@ -51,15 +56,15 @@ export class AddUserListComponent implements OnInit {
      
     })
   }
-  registerZone(){
-    this.route.navigate(['/zone-list'])
-  let dataUrl=[{
+  registerZone(){   
+    // this.route.navigate(['/zone-list'])
+  let dataUrl={
     zone:this.registerTaskForm.value.zone,
     country:this.registerTaskForm.value.country,
     state:this.registerTaskForm.value.state,
     description:this.registerTaskForm.value.desciption,
     status:this.registerTaskForm.value.status
-  }]
+  }
   let datazoneurl= JSON.stringify(dataUrl)
   const headers = new HttpHeaders({ 'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6IjcxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJkZWZhdWx0bG9naW5icmFuY2giOjEsImlzcyI6InN5c3RlbSIsImlhdCI6MTY3NjAyMzA2MywiZXhwIjoxNjc2MDQxMDYzfQ.GhEpP4ShEfXPFfJkQXwAZudrd9A05ihf0XsBROievjM',"Content-Type": "application/json","moduleId" : '132' })
 

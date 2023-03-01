@@ -1,0 +1,60 @@
+.container{
+    padding-top: 7rem;
+  
+}
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    max-width: 800px;
+    height: 50vh;
+}
+.converted{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1px;
+}
+.city , div.temp{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+}
+.city:hover {
+ background: #85a167;
+ color: black;
+ display: flex;
+ justify-content: center;
+ border-bottom: 2px solid grey;
+}
+.temp:hover{
+    background: #85a167;
+    color: black;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid grey;
+}
+.city:active{
+    border-bottom: 2px solid;
+}
+
+
+//
+
+section {
+    padding-top: 20px;
+  }
+  
+  .card-text {
+    width: 300px;
+  }
+  
+  .weather-data {
+    border: 1px solid#cbc9c9;
+    padding: 50px;
+  }
+  
+  .temperature {
+    font-size: 35px;
+  }
+  //

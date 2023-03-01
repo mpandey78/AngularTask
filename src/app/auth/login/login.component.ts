@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
  loginWithGoggle(){
   this.socialAuth.signIn(GoogleLoginProvider.PROVIDER_ID)
   this.socialAuth.authState.subscribe((user)=>{
+    console.log(user);
+    
     this.user=user
     console.log(this.user);
     
@@ -70,6 +72,8 @@ export class LoginComponent implements OnInit {
   this.authService.postApi('login',dataApi,0).subscribe(res=>{
    if(res['reponseCode']==200){
     this.authService.successToast(res['responseMessage'])
+    // localStorage.setItem('token', res['result']['token'])
+    this.router.navigate(['/user-list'],{skipLocationChange:true})
    } else {
     this.authService.errorToast(res['responseMessage'])
 

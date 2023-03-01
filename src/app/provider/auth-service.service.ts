@@ -84,4 +84,7 @@ export class AuthServiceService {
   warningToast(msg:string) {
     this.toastr.warning(msg);
   }
+  public getAuthStatus(){
+
+  }
 }

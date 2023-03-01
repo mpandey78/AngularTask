@@ -1,0 +1,83 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row d-flex" style="justify-content: center;align-items: center;">
+    <div class="card" *ngIf='!hide'>
+        <div class="row d-flex w-100 mb-4">
+            <div class="col-md-3">
+               <div class="city active" >
+                city temp
+               </div> 
+            </div>
+            <div class="col-md-3">
+               <div class="temp">
+                temp convert
+               </div>
+            </div>
+            <div class="col-md-3">
+                next topic
+            </div>
+            <div class="col-md-3">
+                next topic
+            </div>
+        </div>
+        <div class="card-title">Temperature converter</div>
+       <form [formGroup]="temperatureForm">
+        <div class="row">
+            <div class="mt-3">
+
+                <label for="" class="mb-2">Enter Temperature in @c (celsius)</label>
+                <input type="text" (keypress)="NumOnly($event)" placeholder="enter temperature " maxlength="5" formControlName="tempc" class="form-control" [(ngModel)]="cel" (ngModelChange)="getChangeFah($event)">
+
+                <label for="" class="mb-2">Enter Temperature in @f (fernheight)</label>
+                <input type="text" (keypress)="NumOnly($event)" placeholder="enter temperature " maxlength="10" formControlName="tempf" class="form-control" [(ngModel)]="fah" (ngModelChange)="getChangeCel($event)">
+            </div>
+            <div class="btn-submit mb-4">
+
+                <!-- <button class="btn btn-primary btn-sm mt-3" style="width: 100%;" >Submit</button> -->
+            </div>
+        </div>
+        </form>
+        <div class="converted">
+            converted temperature is <span class="text-success">{{fah}} f</span>
+            
+        </div>
+        <div class="converted mt-4">
+            converted temperature is <span class="text-success">{{cel}} c</span>
+        </div>
+    </div>
+    
+    
+<div class=" weather-data d-flex align-items-center mt-50">
+
+    <section class="d-flex align-items-center justify-content-center">
+      <label>Enter City: </label>
+      <input type="text" [(ngModel)]="city" (ngModelChange)="cityChange($event)" class="large ml-30" placeholder="Seattle" data-test-id="app-input"/>
+    </section>
+  
+    <section class="mt-20 layout-row align-items-center justify-content-center">
+      <div class="card ">
+          <div *ngIf="cityDetails && hideDetails" data-test-id="weather-details" class="card-text pt-10 layout-row justify-content-between">
+              <div class="mt-20 outlined">
+                <button class="icon-only mx-2">
+                  <i class="material-icons">wb_sunny</i>
+                </button>
+                <span data-test-id="output-temperature" class="temperature"> {{cityDetails.temperature}}</span>
+              </div>
+              <div class="mr-15 mb-15">
+                <div data-test-id="output-wind" class="mt-20">
+                  Wind: {{cityDetails.wind}}
+                </div>
+                <div data-test-id="output-humidity" class="mt-20">
+                  Humidity: {{cityDetails.humidity}}
+                </div>
+              </div>
+          </div>
+          <div *ngIf="showNoResult" data-test-id="no-results" class="card-text">No Results Found</div>
+      </div>
+    </section>
+  </div>
+    <!-- <div class="layout-column align-items-center">
+  <app-temperature [weatherData]="weatherData"></app-temperature>
+</div> -->
+    </div>
+</div>
